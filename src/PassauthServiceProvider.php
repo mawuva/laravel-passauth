@@ -52,7 +52,7 @@ class PassauthServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'passauth');
+        $this->mergeConfigFrom(__DIR__.'/../config/passauth.php', 'passauth');
 
         // Register the main class to use with the facade
         $this->app->singleton('passauth', function () {

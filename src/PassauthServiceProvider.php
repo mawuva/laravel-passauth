@@ -16,33 +16,13 @@ class PassauthServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'passauth');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'passauth');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'passauth');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/passauth.php' => config_path('passauth.php'),
             ], 'config');
-
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/passauth'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/passauth'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/passauth'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
         }
     }
 

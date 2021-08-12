@@ -53,6 +53,10 @@ class RegisterUser
 
         $user ->save();
 
+        if (config('passauth.password-history.enable')) {
+            $user ->updatePasswordHistory();
+        }
+
         return $user;
     }
     

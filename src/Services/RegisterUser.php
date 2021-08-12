@@ -11,12 +11,14 @@ class RegisterUser
      * Handle user registration.
      *
      * @param array $data
+     * @param string $callback_url
+     * @param string $view
      *
      * @return array
      */
-    public function __invoke(array $data): array
+    public function __invoke(array $data, $callback_url = null, $view = null): array
     {
-        $user = $this ->storeUserData($data);
+        $user = $this ->storeUserData($data, $callback_url, $view);
 
         return success_reply(trans('passauth::messages.user_account_created'), $user, 201);
     }
@@ -25,10 +27,12 @@ class RegisterUser
      * Store user data
      *
      * @param array $data
+     * @param string $callback_url
+     * @param string $view
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    private function storeUserData(array $data): Model
+    private function storeUserData(array $data, $callback_url = null, $view = null): Model
     {
         $user = app() ->make(config('passauth.user.model'));
 
@@ -55,6 +59,10 @@ class RegisterUser
 
         if (config('passauth.password-history.enable')) {
             $user ->updatePasswordHistory();
+        }
+
+        if (config('passauth.enable.email_verification')) {
+            $user ->sendEmailVerificationNotification($callback_url, $view);
         }
 
         return $user;

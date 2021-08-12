@@ -8,6 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class RegisterUser
 {
     /**
+     * Handle user registration.
+     *
+     * @param array $data
+     *
+     * @return array
+     */
+    public function __invoke(array $data): array
+    {
+        $user = $this ->storeUserData($data);
+
+        return success_reply(trans('passauth::messages.user_account_created'), $user, 201);
+    }
+
+    /**
      * Store user data
      *
      * @param array $data

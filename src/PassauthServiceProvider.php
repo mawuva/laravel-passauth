@@ -1,10 +1,10 @@
 <?php
 
-namespace Mawuekom\LaravelPassauth;
+namespace Mawuekom\Passauth;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelPassauthServiceProvider extends ServiceProvider
+class PassauthServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -54,7 +54,7 @@ class LaravelPassauthServiceProvider extends ServiceProvider
 
         // Register the main class to use with the facade
         $this->app->singleton('laravel-passauth', function () {
-            return new LaravelPassauth;
+            return new Passauth;
         });
     }
 }

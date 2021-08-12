@@ -1,11 +1,11 @@
 {
     "name": "mawuekom/laravel-passauth",
-    "description": "Bunch of authentication features for laravel",
+    "description": "A Bunch of authentication features for laravel",
     "keywords": [
-        "mawuekom",
+        "mawuekom", "passauth",
         "laravel-passauth"
     ],
-    "homepage": "https://github.com/mawuekom/laravel-passauth",
+    "homepage": "https://github.com/mawuva/laravel-passauth",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Mawuekom\\LaravelPassauth\\": "src"
+            "Mawuekom\\Passauth\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Mawuekom\\LaravelPassauth\\Tests\\": "tests"
+            "Mawuekom\\Passauth\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,10 +44,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Mawuekom\\LaravelPassauth\\LaravelPassauthServiceProvider"
+                "Mawuekom\\Passauth\\PassauthServiceProvider"
             ],
             "aliases": {
-                "LaravelPassauth": "Mawuekom\\LaravelPassauth\\LaravelPassauthFacade"
+                "Passauth": "Mawuekom\\Passauth\\PassauthFacade"
             }
         }
     }

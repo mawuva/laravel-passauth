@@ -12,7 +12,7 @@ if (!function_exists('resolve_key')) {
      * 
      * @return string
      */
-    function resolve_key(string $resource, int|string $id = null, $inTrashed = false): string {
+    function resolve_key(string $resource, $id = null, $inTrashed = false): string {
         $uuidColumn = config('passauth.uuids.column');
         $resourcePrimaryKey = config('passauth.'.$resource.'.table.primary_key');
 
@@ -31,7 +31,7 @@ if (!function_exists('uuid_is_enabled_and_has_been_detected')) {
      * 
      * @return bool
      */
-    function uuid_is_enabled_and_has_been_detected(string $resource, int|string $id = null, $inTrashed = false): bool {
+    function uuid_is_enabled_and_has_been_detected(string $resource, $id = null, $inTrashed = false): bool {
         $model = config('userly.'.$resource.'.model');
         $uuidColumn = config('userly.uuids.column');
 

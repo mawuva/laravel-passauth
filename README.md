@@ -31,13 +31,13 @@ Once install, go to `config/app.php` to add `PassauthServiceProvider` in provide
 - #### Publish Assets
 
 ```bash
-php artisan vendor:publish --tag=passauth
+php artisan vendor:publish --provider="Mawuekom\Passauth\PassauthServiceProvider"
 ```
 
 Or you can publish config
 
 ```bash
-php artisan vendor:publish --tag=passauth --config
+php artisan vendor:publish --provider="Mawuekom\Passauth\PassauthServiceProvider" --tag="config"
 ```
 
 #### Configuration

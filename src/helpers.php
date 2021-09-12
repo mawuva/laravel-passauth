@@ -216,6 +216,21 @@ if (!function_exists('proper_names_columns_exists_in_schema')) {
     }
 }
 
+if (!function_exists('proper_names_is_required_and_does_not_exist')) {
+    /**
+     * Check if proper names is enabled and does not exist in schema.
+     * 
+     * @return bool
+     */
+    function proper_names_is_required_and_does_not_exist(): bool {
+        $proper_names_enabled = config('passauth.enable.proper_names');
+
+        return ($proper_names_enabled && !proper_names_columns_exists_in_schema())
+                ? true
+                : false;
+    }
+}
+
 if (!function_exists('proper_names_is_required_and_exists')) {
     /**
      * Check if proper names is enabled and exists in schema.

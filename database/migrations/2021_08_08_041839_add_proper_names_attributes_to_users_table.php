@@ -14,14 +14,11 @@ class AddProperNamesAttributesToUsersTable extends Migration
     public function up()
     {
         $table = config('passauth.user.table.name');
-        $proper_names_enabled = config('passauth.proper_names.enable');
 
-        if ($proper_names_enabled) {
+        if (proper_names_is_required_and_does_not_exist()) {
             Schema::table($table, function (Blueprint $table) {
-                if (!proper_names_columns_exists_in_schema()) {
-                    $table->string('last_name') ->nullable() ->after('name');
-                    $table->string('first_name') ->nullable() ->after('last_name');
-                }
+                $table->string('last_name') ->nullable() ->after('name');
+                $table->string('first_name') ->nullable() ->after('last_name');
             });
         }
     }

@@ -51,7 +51,7 @@ return [
 
     'enable' => [
         'email_verification' => false,
-        'proper_names' => false,
+        'proper_names' => true,
         'agree_with_policy_and_terms_data' => true,
         'last_login_data' => true,
     ],

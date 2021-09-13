@@ -52,7 +52,7 @@ return [
 
     'enable' => [
         'email_verification'                => false,
-        'proper_names'                      => true,
+        'proper_names'                      => false,
         'agree_with_policy_and_terms_data'  => true,
         'last_login_data'                   => true,
     ],

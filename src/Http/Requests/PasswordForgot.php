@@ -2,27 +2,27 @@
 
 namespace Mawuekom\Passauth\Http\Requests;
 
-use Mawuekom\Passauth\Services\LoginUser;
+use Mawuekom\Passauth\Services\PasswordForgot;
 use Mawuekom\RequestCustomizer\FormRequestCustomizer;
 
-class LoginUserRequest extends FormRequestCustomizer
+class PasswordForgotRequest extends FormRequestCustomizer
 {
     /**
-     * @var \Mawuekom\Passauth\Services\LoginUser
+     * @var \Mawuekom\Passauth\Services\PasswordForgot
      */
-    protected $loginUser;
+    protected $passwordForgot;
 
     /**
      * Create new form request instance.
      *
-     * @param \Mawuekom\Passauth\Services\LoginUser $registerUser
+     * @param \Mawuekom\Passauth\Services\passwordForgot $passwordForgot
      */
-    public function __construct(LoginUser $loginUser)
+    public function __construct(PasswordForgot $passwordForgot)
     {
         parent::__construct();
-        $this->loginUser = $loginUser;
+        $this->passwordForgot = $passwordForgot;
     }
-
+    
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -41,8 +41,9 @@ class LoginUserRequest extends FormRequestCustomizer
     public function rules(): array
     {
         return [
-            'identifiant'   => 'required|string|max:255',
-            'password'      => 'required|string|min:6',
+            'token'     => 'required',
+            'email'     => 'required|email',
+            'password'  => 'required|min:6|confirmed',
         ];
     }
 
@@ -63,6 +64,6 @@ class LoginUserRequest extends FormRequestCustomizer
      */
     public function fulfill(): array
     {
-        return call_user_func($this ->loginUser, $this ->validated());
+        return [];
     }
 }

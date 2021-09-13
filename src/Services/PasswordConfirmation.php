@@ -5,6 +5,7 @@ namespace Mawuekom\Passauth\Services;
 use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class PasswordConfirmation
 {
@@ -28,7 +29,7 @@ class PasswordConfirmation
         }
         
         if (!Hash::check($password, $user ->password)) {
-            throw new Exception(trans('passauth::messages.password_not_matching'), Response::HTTP_BAD_REQUEST);
+            throw ValidationException::withMessages(['password' =>trans('passauth::messages.password_not_matching')]);
         }
 
         return success_reply(trans('passauth::messages.password_matching'), $user);

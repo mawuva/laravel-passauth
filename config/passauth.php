@@ -10,12 +10,12 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'user' => [
+    'user'                  => [
         'model'             => App\Models\User::class,
         'name'              => 'User',
         'resource_name'     => 'user',
 
-        'table'     => [
+        'table'             => [
             'name'          => env('PASSAUTH_USERS_DATABASE_TABLE', 'users'),
             'primary_key'   => env('PASSAUTH_USERS_DATABASE_TABLE_PRIMARY_KEY', 'id'),
         ],
@@ -26,7 +26,7 @@ return [
     | Password history config
     |--------------------------------------------------------------------------
     */
-    'password_history' => [
+    'password_history'      => [
         'enable'            => true,
         'checker'           => false,
         'number_to_check'   => 3,
@@ -39,8 +39,9 @@ return [
     */
 
     'required_identifiants' => [
-        'email'                 => true,
-        'phone_number'          => false,
+        'email'             => true,
+        'phone_number'      => false,
+        'proper_names'      => true,
     ],
 
     /*
@@ -50,19 +51,19 @@ return [
     */
 
     'enable' => [
-        'email_verification' => false,
-        'proper_names' => true,
-        'agree_with_policy_and_terms_data' => true,
-        'last_login_data' => true,
+        'email_verification'                => false,
+        'proper_names'                      => true,
+        'agree_with_policy_and_terms_data'  => true,
+        'last_login_data'                   => true,
     ],
 
-    'agree_with_policy_and_terms_column' => [
-        'name' => 'has_agreed_with_policy_and_terms_at',
-        'type' => 'timestamp'
+    'agree_with_policy_and_terms_column'    => [
+        'name'                              => 'has_agreed_with_policy_and_terms_at',
+        'type'                              => 'timestamp'
     ],
 
-    'last_login_column' => [
-        'name' => 'last_login_at',
-        'type' => 'timestamp'
+    'last_login_column'     => [
+        'name'              => 'last_login_at',
+        'type'              => 'timestamp'
     ],
 ];

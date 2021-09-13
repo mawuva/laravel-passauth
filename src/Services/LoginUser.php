@@ -3,10 +3,9 @@
 namespace Mawuekom\Passauth\Services;
 
 use Carbon\Carbon;
-use Exception;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class LoginUser
 {
@@ -22,11 +21,11 @@ class LoginUser
         $user = $this ->checkIdentifiant($credentials['identifiant']);
 
         if (is_null($user)) {
-            throw new Exception(trans('passauth::messages.identifiant_not_matching'), Response::HTTP_BAD_REQUEST);
+            throw ValidationException::withMessages(['identifiant' =>trans('passauth::messages.identifiant_not_matching')]);
         }
 
         if (!Hash::check($credentials['password'], $user ->password)) {
-            throw new Exception(trans('passauth::messages.password_not_matching'), Response::HTTP_BAD_REQUEST);
+            throw ValidationException::withMessages(['password' =>trans('passauth::messages.password_not_matching')]);
         }
 
         $this ->updateLastLogintAt($user);

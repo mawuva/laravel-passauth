@@ -1,10 +1,11 @@
 <?php
 
-namespace Domain\Passauth\Services;
+namespace Mawuekom\Passauth\Services;
 
 use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 use Mawuekom\PasswordHistory\Services\PasswordHistoryChecker;
 
 class PasswordReset
@@ -37,7 +38,7 @@ class PasswordReset
         $user = config('passauth.user.model')::where('email', $email) ->first();
 
         if (is_null($user)) {
-            throw new Exception(trans('passauth::messages.email_not_matching'), Response::HTTP_BAD_REQUEST);
+            throw ValidationException::withMessages(['email' =>trans('passauth::messages.email_not_matching')]);
         }
 
         $password_history_enabled = config('passauth.password_history.enable');

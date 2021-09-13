@@ -1,12 +1,13 @@
 <?php
 
-namespace Domain\Passauth\Services;
+namespace Mawuekom\Passauth\Services;
 
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class PasswordForgot
 {
@@ -24,7 +25,7 @@ class PasswordForgot
         $user = config('passauth.user.model')::where('email', $email) ->first();
 
         if (is_null($user)) {
-            throw new Exception(trans('passauth::messages.email_not_matching'), Response::HTTP_BAD_REQUEST);
+            throw ValidationException::withMessages(['email' =>trans('passauth::messages.email_not_matching')]);
         }
 
         $token = Str::random(64);

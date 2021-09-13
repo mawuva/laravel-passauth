@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Passauth\Traits;
+namespace Mawuekom\Passauth\Traits;
 
 use Mawuekom\Passauth\Notifications\EmailVerificationNotification;
 use Mawuekom\Passauth\Notifications\ResetPasswordNotification;

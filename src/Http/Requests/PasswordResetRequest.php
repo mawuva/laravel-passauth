@@ -1,11 +1,28 @@
 <?php
 
-namespace Domain\Passauth\Http\Requests;
+namespace Mawuekom\Passauth\Http\Requests;
 
+use Mawuekom\Passauth\Services\PasswordReset;
 use Mawuekom\RequestCustomizer\FormRequestCustomizer;
 
 class PasswordResetRequest extends FormRequestCustomizer
 {
+    /**
+     * @var \Mawuekom\Passauth\Services\PasswordReset
+     */
+    protected $passwordReset;
+
+    /**
+     * Create new form request instance.
+     *
+     * @param \Mawuekom\Passauth\Services\PasswordReset $passwordReset
+     */
+    public function __construct(PasswordReset $passwordReset)
+    {
+        parent::__construct();
+        $this->passwordReset = $passwordReset;
+    }
+    
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -36,6 +53,16 @@ class PasswordResetRequest extends FormRequestCustomizer
      * @return array
      */
     public function sanitizers(): array
+    {
+        return [];
+    }
+
+    /**
+     * Fulfill the update account type request
+     *
+     * @return array
+     */
+    public function fulfill(): array
     {
         return [];
     }

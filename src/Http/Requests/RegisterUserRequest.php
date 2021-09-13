@@ -2,12 +2,29 @@
 
 namespace Mawuekom\Passauth\Http\Requests;
 
+use Mawuekom\Passauth\Services\RegisterUser;
 use Mawuekom\RequestCustomizer\FormRequestCustomizer;
 use Mawuekom\RequestSanitizer\Sanitizers\CapitalizeEachWords;
 use Mawuekom\RequestSanitizer\Sanitizers\Uppercase;
 
 class RegisterUserRequest extends FormRequestCustomizer
 {
+    /**
+     * @var \Mawuekom\Passauth\Services\RegisterUser
+     */
+    protected $registerUser;
+
+    /**
+     * Create new form request instance.
+     *
+     * @param \Mawuekom\Passauth\Services\RegisterUser $registerUser
+     */
+    public function __construct(RegisterUser $registerUser)
+    {
+        parent::__construct();
+        $this ->registerUser = $registerUser;
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,7 +45,7 @@ class RegisterUserRequest extends FormRequestCustomizer
         $users_table = config('passauth.user.table.name');
 
         $proper_names_rules = (proper_names_is_required_and_exists())
-                                ? ['last_name' => 'required|string', 'first_name' => 'required|string']
+                                ? ['last_name' => 'string', 'first_name' => 'string']
                                 : [];
 
         $email_rules = (email_is_defined_as_identifiant())
@@ -61,5 +78,15 @@ class RegisterUserRequest extends FormRequestCustomizer
                 CapitalizeEachWords::class,
             ],
         ];
+    }
+
+    /**
+     * Fulfill the update account type request
+     *
+     * @return array
+     */
+    public function fulfill(): array
+    {
+        return call_user_func($this ->registerUser, $this ->validated());
     }
 }

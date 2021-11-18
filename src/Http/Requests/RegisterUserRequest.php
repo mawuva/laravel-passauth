@@ -46,9 +46,7 @@ class RegisterUserRequest extends FormRequestCustomizer
         $usersTable = config('custom-user.user.table.name');
 
         $rules = [
-            'name'                          => [
-                'string',  Rule::unique($usersTable, 'name')
-            ],
+            'name'                          => ['string'],
 
             'email'                         => [
                 'required', 'string', 'email', Rule::unique($usersTable, 'email')
@@ -106,10 +104,13 @@ class RegisterUserRequest extends FormRequestCustomizer
     /**
      * Fulfill the update account type request
      *
+     * @param string|null $callback_url
+     * @param string|null $view
+     * 
      * @return array
      */
-    public function fulfill(): array
+    public function fulfill($callback_url = null, $view = null): array
     {
-        return call_user_func($this ->registerUser, $this ->toDTO());
+        return call_user_func($this ->registerUser, $this ->toDTO(), $callback_url, $view);
     }
 }

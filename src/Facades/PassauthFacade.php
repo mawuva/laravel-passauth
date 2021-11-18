@@ -1,13 +1,13 @@
 <?php
 
-namespace Mawuekom\Passauth;
+namespace Mawuekom\Passauth\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \Mawuekom\Passauth\Skeleton\SkeletonClass
  */
-class PassauthFacade extends Facade
+class Passauth extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +16,6 @@ class PassauthFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'laravel-passauth';
+        return 'passauth';
     }
 }

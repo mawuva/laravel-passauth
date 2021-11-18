@@ -3,6 +3,7 @@
 namespace Mawuekom\Passauth;
 
 use Illuminate\Support\ServiceProvider;
+use Mawuekom\Passauth\Passauth;
 
 class PassauthServiceProvider extends ServiceProvider
 {
@@ -35,8 +36,8 @@ class PassauthServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/passauth.php', 'passauth');
 
         // Register the main class to use with the facade
-        /*$this->app->singleton('passauth', function () {
+        $this->app->singleton('passauth', function () {
             return new Passauth;
-        });*/
+        });
     }
 }

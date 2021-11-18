@@ -35,7 +35,7 @@ class LoginUser
 
         CustomUser::updateLastLogintAt($user);
 
-        if (config('passauth.email_verification.enabled') && $user->email_verified_at === null) {
+        if (config('passauth.email_verification.enabled') && !$user->hasVerifiedEmail()) {
             return failure_response(trans('passauth::messages.account_not_yet_activated'), $user);
         }
 

@@ -111,6 +111,6 @@ class RegisterUserRequest extends FormRequestCustomizer
      */
     public function fulfill($callback_url = null, $view = null): array
     {
-        return call_user_func($this ->registerUser, $this ->toDTO(), $callback_url, $view);
+        return call_user_func($this ->registerUser, [$this ->toDTO(), $callback_url, $view]);
     }
 }

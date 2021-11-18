@@ -1,8 +1,13 @@
 <?php
 
-/*
- * You can place your custom package configuration in here.
- */
 return [
-    
+    /*
+    |--------------------------------------------------------------------------
+    | Enable or disable email verification.
+    |--------------------------------------------------------------------------
+    */
+
+    'email_verification'    => [
+        'enabled'           => true,
+    ],
 ];

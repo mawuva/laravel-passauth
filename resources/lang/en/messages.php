@@ -2,6 +2,7 @@
 
 return [
     'account_has_been_created' => 'Your account has been created successfully.',
+    'account_not_yet_activated' => 'Your account has not yet been activated.',
     'user_account_created' => 'User account has been created successfully.',
     'user_login_successfully' => 'User login successfully.',
     'identifiant_not_matching' => 'The provided identifiant does not match our records.',

@@ -3,6 +3,7 @@
 return [
 
     'account_has_been_created' => 'Votre compte a été créé avec succès.',
+    'account_not_yet_activated' => 'Votre compte n\'a pas encore été activé.',
     'user_account_created' => 'Compte utilisateur créé avec succès.',
     'user_login_successfully' => 'L\'utilisateur s\'est connecté avec succès.',
     'identifiant_not_matching' => 'L\'identifiant fourni ne correspond pas à nos enregistrements.',

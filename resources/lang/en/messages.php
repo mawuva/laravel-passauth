@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'user_account_created' => 'User account created successfully.',
+    'account_has_been_created' => 'Your account has been created successfully.',
+    'user_account_created' => 'User account has been created successfully.',
     'user_login_successfully' => 'User login successfully.',
     'identifiant_not_matching' => 'The provided identifiant does not match our records.',
     'email_not_matching' => 'The provided email does not match our records.',
@@ -13,6 +14,7 @@ return [
     'sent_verification_link_successfully' => 'Verification link sent successfully !',
     'email_verified' => 'Email verified !',
     'email_verified_successfully' => 'Email verified successfully !',
+    'email_has_been_verified' => 'Email has been verified successfully !',
     'sent_password_reset_link' => 'A reset link has been sent to your email address.',
     'invalid_token' => 'Invalid token !',
     'password_changed' => 'Your password has been changed !',

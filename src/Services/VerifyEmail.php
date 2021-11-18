@@ -5,6 +5,7 @@ namespace Mawuekom\Passauth\Services;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Response;
+use Mawuekom\CustomUser\Facades\CustomUser;
 
 class VerifyEmail
 {
@@ -18,7 +19,7 @@ class VerifyEmail
      */
     public function __invoke($id, $hash): array
     {
-        $user = get_user_by_id($id);
+        $user = CustomUser::getUserById($id);
 
         if (is_null($user)) {
             throw new Exception(trans('passauth::messages.user_not_found'), Response::HTTP_NOT_FOUND);

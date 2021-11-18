@@ -4,10 +4,28 @@ namespace Mawuekom\Passauth\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Mawuekom\CustomUser\DataTransferObjects\StoreUserDTO;
+use Mawuekom\Passauth\Services\RegisterUser;
 use Mawuekom\RequestCustomizer\FormRequestCustomizer;
+use Mawuekom\RequestSanitizer\Sanitizers\CapitalizeEachWords;
 
 class RegisterUserRequest extends FormRequestCustomizer
 {
+    /**
+     * @var \Mawuekom\Passauth\Services\RegisterUser
+     */
+    protected $registerUser;
+
+    /**
+     * Create new form request instance.
+     *
+     * @param \Mawuekom\Passauth\Services\RegisterUser $registerUser
+     */
+    public function __construct(RegisterUser $registerUser)
+    {
+        parent::__construct();
+        $this ->registerUser = $registerUser;
+    }
+    
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -83,5 +101,15 @@ class RegisterUserRequest extends FormRequestCustomizer
             'phone_number'                  => $this ->phone_number,
             'agree_with_policy_and_terms'   => $this ->agree_with_policy_and_terms,
         ]);
+    }
+
+    /**
+     * Fulfill the update account type request
+     *
+     * @return array
+     */
+    public function fulfill(): array
+    {
+        return call_user_func($this ->registerUser, $this ->toDTO());
     }
 }

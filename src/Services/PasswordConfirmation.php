@@ -30,6 +30,6 @@ class PasswordConfirmation
             throw ValidationException::withMessages(['password' =>trans('passauth::messages.password_not_matching')]);
         }
 
-        return success_response(trans('passauth::messages.password_matching'), $user);
+        return success_response($user, trans('passauth::messages.password_matching'));
     }
 }

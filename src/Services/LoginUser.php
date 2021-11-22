@@ -36,11 +36,11 @@ class LoginUser
         CustomUser::updateLastLogintAt($user);
 
         if (config('passauth.email_verification.enabled') && !$user->hasVerifiedEmail()) {
-            return failure_response(trans('passauth::messages.account_not_yet_activated'), $user);
+            return failure_response($user, trans('passauth::messages.account_not_yet_activated'));
         }
 
         else {
-            return success_response(trans('passauth::messages.user_login_successfully'), $user);
+            return success_response($user, trans('passauth::messages.user_login_successfully'));
         }
     }
 }

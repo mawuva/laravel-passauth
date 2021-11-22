@@ -35,6 +35,6 @@ class PasswordReset
 
         app(UpdatePasswordAction::class) ->execute($user, $passwordResetDTO ->password);
 
-        return success_response(trans('passauth::messages.password_changed'));
+        return success_response(null, trans('passauth::messages.password_changed'));
     }
 }

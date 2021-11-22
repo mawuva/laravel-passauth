@@ -2,6 +2,7 @@
 
 namespace Mawuekom\Passauth\Services;
 
+use Illuminate\Http\Response;
 use Mawuekom\CustomUser\Actions\StoreUserAction;
 use Mawuekom\CustomUser\DataTransferObjects\StoreUserDTO;
 
@@ -24,6 +25,6 @@ class RegisterUser
             $user ->sendEmailVerificationNotification($callback_url, $view);
         }
 
-        return success_response(trans('passauth::messages.user_account_created'), $user, 201);
+        return success_response($user, trans('passauth::messages.user_account_created'), Response::HTTP_CREATED);
     }
 }

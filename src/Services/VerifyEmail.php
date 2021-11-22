@@ -33,6 +33,6 @@ class VerifyEmail
             $user ->markEmailAsVerified();
         }
 
-        return success_response(trans('userly::messages.email_verified'));
+        return success_response(null, trans('userly::messages.email_verified'));
     }
 }

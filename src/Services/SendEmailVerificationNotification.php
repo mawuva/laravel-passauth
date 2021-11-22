@@ -31,6 +31,6 @@ class SendEmailVerificationNotification
 
         $user ->sendEmailVerificationNotification($callback_url, $view);
 
-        return success_response(trans('passauth::messages.sent_verification_link'));
+        return success_response(null, trans('passauth::messages.sent_verification_link'));
     }
 }

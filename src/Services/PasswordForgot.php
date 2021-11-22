@@ -37,6 +37,6 @@ class PasswordForgot
 
         $user ->sendPasswordResetNotification($token, $callback_url, $view);
 
-        return success_response(trans('passauth::messages.sent_password_reset_link'));
+        return success_response(null, trans('passauth::messages.sent_password_reset_link'));
     }
 }

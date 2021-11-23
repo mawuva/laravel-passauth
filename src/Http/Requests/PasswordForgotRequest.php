@@ -65,6 +65,6 @@ class PasswordForgotRequest extends FormRequestCustomizer
      */
     public function fulfill($callback_url = null, $view = null): array
     {
-        return call_user_func($this ->passwordForgot, [$this ->email, $callback_url, $view]);
+        return call_user_func($this ->passwordForgot, $this ->email, $callback_url, $view);
     }
 }

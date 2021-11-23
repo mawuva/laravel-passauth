@@ -62,9 +62,7 @@ class PasswordConfirmationRequest extends FormRequestCustomizer
      */
     public function fulfill(): array
     {
-        return call_user_func($this ->passwordConfirmation, [
-            auth() ->user() ->id, 
-            $this ->password
-        ]);
+        return call_user_func($this ->passwordConfirmation, auth() ->user() ->id, 
+            $this ->password);
     }
 }

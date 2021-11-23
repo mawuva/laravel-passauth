@@ -79,6 +79,6 @@ class PasswordResetRequest extends FormRequestCustomizer
      */
     public function fulfill(): array
     {
-        return [];
+        return call_user_func($this ->passwordReset, $this ->toDTO());
     }
 }

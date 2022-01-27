@@ -46,7 +46,7 @@ class RegisterUserRequest extends FormRequestCustomizer
         $usersTable = config('custom-user.user.table.name');
 
         $rules = [
-            'name'                          => ['string'],
+            'name'                          => 'string|nullable',
 
             'email'                         => [
                 'required', 'string', 'email', Rule::unique($usersTable, 'email')

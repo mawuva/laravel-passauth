@@ -46,7 +46,7 @@ class RegisterUserRequest extends FormRequestCustomizer
         $usersTable = config('custom-user.user.table.name');
 
         $rules = [
-            'name'                          => ['string'],
+            'name'                          => 'string|nullable',
 
             'email'                         => [
                 'required', 'string', 'email', Rule::unique($usersTable, 'email')
@@ -57,9 +57,6 @@ class RegisterUserRequest extends FormRequestCustomizer
             'phone_number'                  => 'string|nullable|regex:/^([0-9\s\-\+\(\)]*)$/',
             'agree_with_policy_and_terms'   => 'string|nullable',
         ];
-
-        (!get_attribute('name', 'optional'))
-            ?? array_push($rules['name'], 'required');
 
         (get_attribute('phone_number', 'unique'))
             ?? array_push($rules['phone_number'], Rule::unique($usersTable, 'phone_number'));

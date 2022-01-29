@@ -16,7 +16,7 @@ class LoginUserRequest extends FormRequestCustomizer
     /**
      * Create new form request instance.
      *
-     * @param \Mawuekom\Passauth\Services\LoginUser $registerUser
+     * @param \Mawuekom\Passauth\Services\LoginUser $loginUser
      */
     public function __construct(LoginUser $loginUser)
     {
